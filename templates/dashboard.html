@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row g-4">
+  <div class="col-12">
+    <h2 class="fw-semibold text-cafe">Panel de control</h2>
+    <p class="text-muted mb-0">Gestiona tus dispositivos y revisa lecturas del hogar.</p>
+  </div>
+
+  <div class="col-md-7">
+    <div class="card shadow border-0 rounded-4">
+      <div class="card-body p-4">
+        <h5 class="mb-3">Puerta de la Sala</h5>
+        <div class="d-flex align-items-center gap-3">
+          <div id="doorStatusDot" class="status-dot bg-danger"></div>
+          <div>
+            <div class="fw-semibold" id="doorStatusText">CERRADA</div>
+            <small class="text-muted">Rojo = cerrado • Verde = abierto</small>
+          </div>
+          <div class="ms-auto">
+            <button id="toggleDoorBtn" class="btn btn-lg btn-cafe">Alternar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-5">
+    <div class="card shadow border-0 rounded-4">
+      <div class="card-body p-4">
+        <h5 class="mb-3">Temperatura ambiente</h5>
+        <div class="display-5 fw-bold text-cafe"><span id="tempVal">--</span> °C</div>
+        <small class="text-muted">Lectura simulada al refrescar el estado</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="card shadow border-0 rounded-4">
+      <div class="card-body p-4 d-flex justify-content-between align-items-center">
+        <div>
+          <h6 class="mb-1">Estado general</h6>
+          <div class="text-muted small">Actualiza para traer el estado desde MongoDB</div>
+        </div>
+        <button id="refreshBtn" class="btn btn-outline-cafe">Refrescar estado</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.IOT = {
+    endpoints: {
+      state: "{{ url_for('api_state') }}",
+      toggleDoor: "{{ url_for('api_toggle', slug='door_sala') }}"
+    }
+  }
+</script>
+{% endblock %}

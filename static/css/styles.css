@@ -1,0 +1,19 @@
+:root{
+  --cafe:#6b4e3d;
+  --arena:#f3e7d3;
+  --cacao:#3d2b1f;
+  --verde:#2e7d32;
+  --rojo:#c0392b;
+}
+.bg-cafe{ background-color: var(--cafe) !important; }
+.text-cafe{ color: var(--cafe) !important; }
+.btn-cafe{ background-color: var(--cafe); color:#fff; border:none; }
+.btn-cafe:hover{ filter:brightness(0.95); }
+.btn-outline-cafe{ border:1px solid var(--cafe); color:var(--cafe); }
+.btn-outline-cafe:hover{ background:var(--cafe); color:#fff; }
+.bg-fondo{ background: linear-gradient(120deg, var(--arena), #fff); min-height:100vh; }
+.bg-pattern{ background-image: radial-gradient(var(--cafe) 1px, transparent 1px); background-size: 16px 16px; }
+.status-dot{ width:18px; height:18px; border-radius:50%; }
+.bg-danger{ background-color: var(--rojo) !important; }
+.bg-success{ background-color: var(--verde) !important; }
+.card{ border-radius:1rem; }
