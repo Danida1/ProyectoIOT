@@ -8,6 +8,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from pymongo import MongoClient
 from bson import ObjectId
 from dotenv import load_dotenv
+from flask import send_from_directory
+
+
 
 load_dotenv()
 
@@ -64,6 +67,11 @@ def index():
     if "user_id" in session:
         return redirect(url_for("dashboard"))
     return render_template("index.html")
+
+@app.route("/sw.js")
+def sw():
+    return send_from_directory("static/js", "sw.js", mimetype="application/javascript")
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
