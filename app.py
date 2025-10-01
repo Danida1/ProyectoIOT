@@ -174,7 +174,11 @@ def api_toggle(slug):
 # Health check for Render
 @app.route("/healthz")
 def healthz():
-    return jsonify({"status": "ok"})
+    try:
+        client.admin.command('ping')  # PING rápido al cluster
+        return {"status": "ok", "mongo": "ok"}
+    except Exception as e:
+        return {"status": "ok", "mongo": "error", "detail": str(e)}
 
 if __name__ == "__main__":
     # For local testing only
